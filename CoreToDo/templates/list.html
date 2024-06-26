@@ -1,12 +1,24 @@
 <h3>ToDo App</h3>
 
-<form>
+<form method="POST" action="/">
+    {% csrf_token %}
     {{form.title}}
-    <input type="submit">
+    <input type="submit" name="Create list">
 </form>
 
 {% for task in tasks %}
- 
-    <p>{{task}}</p>
+    <div>
 
-{% endfor %}
+        <a href="{% url 'update_task' task.pk %}">Update Task</a>
+        <a href="{% url 'delete' task.pk %}">Delete</a>
+
+
+        {% if task.complete == True %}
+        <strike>{{task}}</strike>
+        {% else %}
+        <span>{{task}}</span>
+        {% endif %}
+
+    </div>
+    
+{% endfor %}    
