@@ -1,7 +1,10 @@
 
 <p>Login page</p>
-<form method="POST">
+<form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     {{form.as_p}}
-    <input name="Login" type="submit">
+    <button>Login</button>
+
 </form>
+<p>Not registered?</p>
+<a href="{%  url 'register' %}"><button>Register</button></a>
